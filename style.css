@@ -12,7 +12,7 @@ main{
 }
 
 header{
-    background-color: black;
+    background-color: #070605;
     display: grid;
     grid-template-columns: auto auto;
     height: 80px;
@@ -29,7 +29,7 @@ header{
 }
 
 .logo{
-    width:5%;
+    width:60px;
 }
 
 .nav-container{
@@ -167,9 +167,26 @@ footer{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: black;
+    background-color: #070605;
     color: white;
     padding: 150px 0;
+}
+
+.main-contact{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulaire-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid rgb(87, 87, 233);
 }
 
 .formulaire_contact{
@@ -177,21 +194,206 @@ footer{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: lightgray;
-    margin: 25px;
-    color: black;
-    border-radius: 5px;
-    height: 300px;
 }
 
-.formulaire_contact label, .formulaire_contact input{
-    margin: 5px;
-    width: 250px;
-    text-align: center;
+.formulaire_contact input{
+    margin: 10px 0px;
+    border-radius: 10px;
+    width: 300px;
+}
+
+.formulaire_contact label{
+    margin: 10px 0px;
+    
+}
+
+.submit{
+    width: 100px !important;
+}
+
+.footer-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.footer-info a{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 20px;
+}
+
+.footer-info a:hover{
+    color: lightgreen;
+    transition: 0.3s
+}
+
+.map{
+    width:600px;
+    height:450px;
+    border:1px solid black;
 }
 
 @media  screen and (max-width: 1400px) {
     .actus-container{
         grid-template-columns: auto;
+    }
+
+    #accueil{
+        font-size: 40px;
+    }
+
+    .title-header{
+        font-size: 20px;
+    }
+
+    .logo-container{
+        margin-left:10px;
+        width: min-content;
+    }
+
+    .actualite{
+        min-height: 500px;
+    }
+
+    .map{
+        width: 300px;
+        height:225px;
+    }
+
+    p, a{
+        font-size: 14px !important;
+    }
+
+    h3{
+        font-size: 30px;
+    }
+
+    h2{
+        font-size: 40px !important;
+    }
+
+    h1{
+        font-size: 50px;
+    }
+
+    .logo{
+        width: 50px;
+    }
+
+    header{
+        height: 80px;
+    }
+
+    .formulaire_contact input{
+        width: 200px;
+    }
+    
+    .formulaire_contact label{
+        font-size: 14px !important;
+    }
+}
+
+@media  screen and (max-width: 600px) {
+    .actualite{
+        min-height: 300px;
+    }
+
+    .map{
+        width: 200px;
+        height:150px;
+    }
+
+    p, a{
+        font-size: 12px !important;
+    }
+
+    h3{
+        font-size: 18px;
+    }
+
+    h2{
+        font-size: 28px !important;
+    }
+
+    h1{
+        font-size: 38px;
+    }
+
+    .logo{
+        width: 40px;
+    }
+
+    header{
+        height: 60px;
+    }
+}
+
+
+@media  screen and (min-width: 2500px) {
+    .map{
+        width: 800px;
+        height:600px;
+    }
+
+    p, a{
+        font-size: 50px !important;
+    }
+
+    h3{
+        font-size: 100px;
+    }
+
+    h2{
+        font-size: 150px !important;
+    }
+
+    h1{
+        font-size: 180px;
+    }
+
+    .logo{
+        width: 140px;
+    }
+
+    header{
+        height: 160px;
+    }
+}
+
+
+@media  screen and (min-width: 3000px) {
+
+    .map{
+        width: 1000px;
+        height:750px;
+    }
+
+    p, a{
+        font-size: 70px !important;
+    }
+
+    h3{
+        font-size: 120px;
+    }
+
+    h2{
+        font-size: 170px !important;
+    }
+
+    h1{
+        font-size: 200px;
+    }
+
+    .logo{
+        width: 160px;
+    }
+
+    header{
+        height: 220px;
     }
 }
