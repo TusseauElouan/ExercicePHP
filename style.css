@@ -7,6 +7,10 @@ html{
     scroll-behavior: smooth;
 }
 
+main{
+    min-height: 99svh;
+}
+
 header{
     background-color: black;
     display: grid;
@@ -136,10 +140,13 @@ header{
     box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
-
-
 }
 
+#actus{
+    text-align: center;
+    margin: 25px 0px;
+    font-size: 50px;
+}
 .sources{
     text-align: end;
     margin-right: 10px;
@@ -161,6 +168,7 @@ footer{
     justify-content: center;
     background-color: black;
     color: white;
+    padding: 150px 0;
 }
 
 .formulaire_contact{
@@ -172,10 +180,13 @@ footer{
     margin: 25px;
     color: black;
     border-radius: 5px;
+    height: 300px;
 }
 
 .formulaire_contact label, .formulaire_contact input{
     margin: 5px;
+    width: 250px;
+    text-align: center;
 }
 
 @media  screen and (max-width: 1400px) {

@@ -8,14 +8,14 @@
 ?>
 
 <footer>
-    <h2>Formulaire de contact</h2>
-    <form action="" method='post' class='formulaire_contact'>
+    <h2 id='form'>Formulaire de contact</h2>
+    <form action="#form" method='post' class='formulaire_contact'>
         <label for="nom">Nom</label>
-        <input type="text" id='nom' name='nom'/>
+        <input type="text" id='nom' name='nom'required/>
         <label for="prenom">Prénom</label>
-        <input type="text" id="prenom" name='prenom'/>
+        <input type="text" id="prenom" name='prenom'required/>
         <label for="mail">Mail</label>
-        <input type="email" id='mail' name='mail'/>
+        <input type="email" id='mail' name='mail'required/>
         <input type="submit"/>
         <p>
             <?php 

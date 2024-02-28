@@ -10,7 +10,9 @@
     <?php 
     include 'header.php'
     ?>
-    <h2>En construction...</h2>
+    <main>
+        <h2>En construction...</h2>
+    </main>
     <?php
     include 'footer.php'
     ?>
