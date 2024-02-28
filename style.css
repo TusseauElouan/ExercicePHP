@@ -68,7 +68,8 @@ header{
 }
 
 .actus-container{
-    display: flex;
+    display: grid;
+    grid-template-columns: 50% 50%;
     width: 1200px;
     justify-content: space-evenly;
     align-items: center;
@@ -80,12 +81,105 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    color: black;
+    text-decoration: none;
+    border: solid 1px black;
+    padding-bottom: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+    transition: 0.5s;
+}
+
+.link-actu:hover{
+    box-shadow: 0px 0px 10px rgba(0,0,0,1);
+    transition: 0.5s;
 }
 
 .actualite{
-    width: 40%;
+    width: 100%;
+    min-height: 700px;
+}
+
+.img-actu-container{
+    width: 100%;
 }
 
 .img-actu{
     width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.titre_actu{
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.content-actu p{
+    margin: 10px;
+}
+
+.centrer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.content-container-page{
+    width: 80%;
+    margin: 50px auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.sources{
+    text-align: end;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.content-container-page p {
+    margin: 10px;
+}
+
+.texte-content{
+    margin: 25px 10px !important;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+}
+
+.formulaire_contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+    margin: 25px;
+    color: black;
+    border-radius: 5px;
+}
+
+.formulaire_contact label, .formulaire_contact input{
+    margin: 5px;
+}
+
+@media  screen and (max-width: 1400px) {
+    .actus-container{
+        grid-template-columns: auto;
+    }
 }

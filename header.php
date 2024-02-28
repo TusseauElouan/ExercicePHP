@@ -5,8 +5,8 @@
         </div>
         <div class="nav-container">
             <nav>
-                <a href="#accueil">Accueil</a>
-                <a href="#actus">Actualités</a>
+                <a href="index.php">Accueil</a>
+                <a href="actualite.php">Actualités</a>
             </nav>
         </div>
     </header>

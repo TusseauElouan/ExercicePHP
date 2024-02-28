@@ -43,19 +43,29 @@
                                         <img src='".$url_image."' alt='Image Actu' title='Image Actu' class='img-actu'/>
                                     </div>
                                     <div class='content-actu'>
-                                        <p class='tags'>".$tag."</p>
-                                        <p class='date_modif'>".$date_modif."</p>
-                                        <h3>".$titre."</h3>
-                                        <p>".$texte."</p>
-                                        <p class='auteurs'>".$nom_auteur. " ". $prenom_auteur ."</p>
-                                        <p class='date_publi'>".$date_publi."</p>
-                                        <p class='sources'>".$sources."</p>
+                                        <p class='tags'>Tags : ".$tag."</p>
+                                        <p class='date_modif'>Dernière modification : ".$date_modif."</p>
+                                        <h3 class='titre_actu'>".$titre."</h3>
+                                        <p class='texte-content'>".substr($texte, 0, 100) ."...</p>
+                                        <p class='auteurs'>Auteur : ".$nom_auteur. " ". $prenom_auteur ."</p>
+                                        <p class='date_publi'>Date de publication : ".$date_publi."</p>
+                                        <p class='sources'>Sources : ".$sources."</p>
                                     </div>
                                 </div>
                             </a>";
                 }
             ?>
+            <a href="actualite.php" class='link-actu'>
+                <div class='actualite'>
+                    <div class="centrer">
+                        <h3>En savoir plus...</h3>
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
+    <?php 
+    include 'footer.php'
+    ?>
 </body>
 </html>
