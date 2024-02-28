@@ -14,7 +14,7 @@ main{
 header{
     background-color: black;
     display: grid;
-    grid-template-columns: 85% 15%;
+    grid-template-columns: auto auto;
     height: 80px;
 }
 
