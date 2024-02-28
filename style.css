@@ -200,6 +200,7 @@ footer{
     margin: 10px 0px;
     border-radius: 10px;
     width: 300px;
+    padding: 5px;
 }
 
 .formulaire_contact label{
@@ -215,7 +216,7 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     margin-bottom: 50px;
 }
 
@@ -238,6 +239,18 @@ footer{
     border:1px solid black;
 }
 
+.ajoute{
+    color: green;
+}
+
+.mention{
+    width: 80%;
+    margin: 40px auto;
+}
+
+.mention p, .mention h2{
+    margin: 15px;
+}
 @media  screen and (max-width: 1400px) {
     .actus-container{
         grid-template-columns: auto;

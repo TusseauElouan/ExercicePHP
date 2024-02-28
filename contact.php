@@ -1,8 +1,9 @@
 <?php 
+    require_once 'pdo.php';
     if (isset($_REQUEST['nom'], $_REQUEST['prenom'], $_REQUEST['mail'])){
         $sql = 'INSERT INTO contacts(nom, prenom, mail) VALUES ("'.$_REQUEST['nom'].'", "'.$_REQUEST['prenom'].'", "'.$_REQUEST['mail'].'")';
         $temp = $pdo->exec($sql);
-        $message = 'Votre contacte a été enregistré !';
+        $message = 'Votre contact a été enregistré !';
     }
 ?>
 
@@ -11,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contact</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,7 +22,7 @@
     <main class='main-contact'>
         <div class='formulaire-container'>
             <h2 id='form'>Formulaire de contact</h2>
-            <form action="#form" method='post' class='formulaire_contact'>
+            <form action="" method='post' class='formulaire_contact'>
                 <label for="nom">Nom</label>
                 <input type="text" id='nom' name='nom'required/>
                 <label for="prenom">Prénom</label>
@@ -29,7 +30,7 @@
                 <label for="mail">Mail</label>
                 <input type="email" id='mail' name='mail'required/>
                 <input type="submit" class='submit'/>
-                <p>
+                <p class='ajoute'>
                 <?php 
                 if (isset($_REQUEST['nom'], $_REQUEST['prenom'], $_REQUEST['mail'])){
                     echo $message;
