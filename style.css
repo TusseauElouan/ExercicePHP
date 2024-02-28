@@ -74,7 +74,7 @@ header{
 .actus-container{
     display: grid;
     grid-template-columns: 50% 50%;
-    width: 1200px;
+    width: 80%;
     justify-content: space-evenly;
     align-items: center;
     margin: 0 auto;
