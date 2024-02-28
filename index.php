@@ -37,7 +37,7 @@
                     $date_modif = $resultat['date_revision'];
                     $tag = $resultat['tags'];
                     $sources = $resultat['sources'];
-                    echo "  <a href='article.php?id='".$resultat['id_actualite'].">
+                    echo "  <a href='article.php?id=".$resultat['id_actualite']."' class='link-actu'>
                                 <div class='actualite'>
                                     <div class='img-actu-container'>
                                         <img src='".$url_image."' alt='Image Actu' title='Image Actu' class='img-actu'/>

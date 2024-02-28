@@ -70,7 +70,20 @@ header{
 .actus-container{
     display: flex;
     width: 1200px;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 auto;
+    
+}
 
+.link-actu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.actualite{
+    width: 40%;
 }
 
 .img-actu{
