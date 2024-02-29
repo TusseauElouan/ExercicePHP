@@ -22,10 +22,10 @@
             <h2 id="actus">Actualités</h2>
             <div class="actus-container">
                 <?php 
-                    $sql = 'SELECT * FROM actualites';
+                    $sql = 'SELECT * FROM actualites ORDER BY date_revision DESC LIMIT 5';
                     $temp = $pdo->query($sql);
 
-                    $sql2 = 'SELECT auteurs.nom, auteurs.prenom FROM auteurs, actualites WHERE auteurs.id_auteur = actualites.id_auteur ORDER BY date_revision DESC LIMIT 5';
+                    $sql2 = 'SELECT auteurs.nom, auteurs.prenom FROM auteurs, actualites WHERE auteurs.id_auteur = actualites.id_auteur';
                     $temp2 = $pdo->query($sql2);
                     while (($resultat = $temp->fetch()) && ($resultat2 = $temp2->fetch())){
                         $nom_auteur = $resultat2['nom'];
