@@ -25,7 +25,7 @@
                     $sql = 'SELECT * FROM actualites';
                     $temp = $pdo->query($sql);
 
-                    $sql2 = 'SELECT auteurs.nom, auteurs.prenom FROM auteurs, actualites WHERE auteurs.id_auteur = actualites.id_auteur ORDER BY date_revision LIMIT 5';
+                    $sql2 = 'SELECT auteurs.nom, auteurs.prenom FROM auteurs, actualites WHERE auteurs.id_auteur = actualites.id_auteur ORDER BY date_revision DESC LIMIT 5';
                     $temp2 = $pdo->query($sql2);
                     while (($resultat = $temp->fetch()) && ($resultat2 = $temp2->fetch())){
                         $nom_auteur = $resultat2['nom'];
