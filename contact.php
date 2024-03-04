@@ -1,5 +1,5 @@
 <?php 
-    require_once 'pdo.php';
+    require_once 'include/pdo.php';
     if (isset($_REQUEST['nom'], $_REQUEST['prenom'], $_REQUEST['mail'])){
         $sql = 'INSERT INTO contacts(nom, prenom, mail) VALUES ("'.$_REQUEST['nom'].'", "'.$_REQUEST['prenom'].'", "'.$_REQUEST['mail'].'")';
         $temp = $pdo->exec($sql);
@@ -17,7 +17,7 @@
 </head>
 <body>
     <?php 
-    include 'header.php'
+    include 'include/header.php'
     ?>
     <main class='main-contact'>
         <div class='formulaire-container'>
@@ -39,7 +39,7 @@
         </div>
     </main>
     <?php
-    include 'footer.php'
+    include 'include/footer.php'
     ?>
 </body>
 </html>

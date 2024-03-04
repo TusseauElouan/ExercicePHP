@@ -103,7 +103,7 @@ header{
 
 .actualite{
     width: 100%;
-    min-height: 700px;
+    min-height: 800px;
 }
 
 .img-actu-container{
@@ -250,6 +250,13 @@ footer{
 
 .mention p, .mention h2{
     margin: 15px;
+}
+
+.actualite_ensavoirplus{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 800px;
 }
 @media  screen and (max-width: 1400px) {
     .actus-container{

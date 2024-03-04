@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php 
-    include 'header.php';
+    include 'include/header.php';
     ?>
     <main>
         <div class='mention'>
@@ -46,7 +46,7 @@
         </div>
     </main>
     <?php 
-    include 'footer.php';
+    include 'include/footer.php';
     ?>
 
 </body>

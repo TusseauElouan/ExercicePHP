@@ -1,5 +1,6 @@
 <?php 
-    require_once "pdo.php"
+    require_once "include/pdo.php";
+    require_once "include/actualite.php";
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php include 'header.php'?>
+    <?php include 'include/header.php'?>
     <main>
         <div class="background">
             <div>
@@ -25,7 +26,7 @@
                     $sql = 'SELECT * FROM actualites ORDER BY date_revision DESC LIMIT 5';
                     $temp = $pdo->query($sql);
 
-                    $sql2 = 'SELECT auteurs.nom, auteurs.prenom FROM auteurs, actualites WHERE auteurs.id_auteur = actualites.id_auteur';
+                    $sql2 = 'SELECT auteurs.nom, auteurs.prenom FROM auteurs, actualites WHERE auteurs.id_auteur = actualites.id_auteur ORDER BY actualites.date_revision DESC LIMIT 5';
                     $temp2 = $pdo->query($sql2);
                     while (($resultat = $temp->fetch()) && ($resultat2 = $temp2->fetch())){
                         $nom_auteur = $resultat2['nom'];
@@ -38,36 +39,41 @@
                         $date_modif = $resultat['date_revision'];
                         $tag = $resultat['tags'];
                         $sources = $resultat['sources'];
-                        echo "  <a href='article.php?id=".$resultat['id_actualite']."' class='link-actu'>
-                                    <div class='actualite'>
-                                        <div class='img-actu-container'>
-                                            <img src='".$url_image."' alt='Image Actu' title='Image Actu' class='img-actu'/>
-                                        </div>
-                                        <div class='content-actu'>
-                                            <p class='tags'>Tags : ".$tag."</p>
-                                            <p class='date_modif'>Dernière modification : ".$date_modif."</p>
-                                            <h3 class='titre_actu'>".$titre."</h3>
-                                            <p class='texte-content'>".substr($texte, 0, 100) ."...</p>
-                                            <p class='auteurs'>Auteur : ".$nom_auteur. " ". $prenom_auteur ."</p>
-                                            <p class='date_publi'>Date de publication : ".$date_publi."</p>
-                                            <p class='sources'>Sources : ".$sources."</p>
-                                        </div>
-                                    </div>
-                                </a>";
+                        
+                        $actualite = new Actualite($resultat['id_actualite'], $titre, $texte, $url_image, $nom_auteur, $prenom_auteur, $tag, $date_modif, $date_publi, $sources);
+                ?>
+                <a href='article.php?id=<?= $actualite->getID()?>' class='link-actu'>
+                    <div class='actualite'>
+                        <div class='img-actu-container'>
+                            <img src='<?= $actualite->getUrlImage()?>' alt='Image Actu' title='Image Actu' class='img-actu'/>
+                        </div>
+                        <div class='content-actu'>
+                            <p class='tags'>Tags : <?= $actualite->getTag()?></p>
+                            <p class='date_modif'>Dernière modification : <?= $actualite->getDateModif()?></p>
+                            <h3 class='titre_actu'><?= $actualite->getTitre()?></h3>
+                            <p class='texte-content'><?= $actualite->apercu()?></p>
+                            <p class='auteurs'>Auteur : <?= $actualite->getNomAuteur()?> <?= $actualite->getPrenomAuteur()?></p>
+                            <p class='date_publi'>Date de publication : <?= $actualite->getDatePubli()?></p>
+                            <p class='sources'>Sources : <?= $actualite->getSources()?></p>
+                        </div>
+                    </div>
+                </a>
+                <?php
                     }
                 ?>
                 <a href="actualite.php" class='link-actu'>
-                    <div class='actualite'>
+                    <div class='actualite_ensavoirplus'>
                         <div class="centrer">
                             <h3>En savoir plus...</h3>
                         </div>
                     </div>
                 </a>
+
             </div>
         </div>
     </main>
     <?php 
-    include 'footer.php'
+    include 'include/footer.php'
     ?>
 </body>
 </html>

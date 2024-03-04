@@ -6,7 +6,7 @@
         <div class="nav-container">
             <nav>
                 <a href="index.php">Accueil</a>
-                <a href="actualite.php">Actualités</a>
+                <a href="actualite_display.php">Actualités</a>
             </nav>
         </div>
     </header>
