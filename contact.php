@@ -4,6 +4,7 @@
         $sql = 'INSERT INTO contacts(nom, prenom, mail) VALUES ("'.$_REQUEST['nom'].'", "'.$_REQUEST['prenom'].'", "'.$_REQUEST['mail'].'")';
         $temp = $pdo->exec($sql);
         $message = 'Votre contact a été enregistré !';
+        $contact = new Contact($_REQUEST['nom'], $_REQUEST['prenom'], $_REQUEST['mail']);
     }
 ?>
 

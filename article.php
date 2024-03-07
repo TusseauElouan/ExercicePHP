@@ -1,6 +1,7 @@
 <?php 
 
     require_once "include/pdo.php";
+    require_once "include/actualite.php";
 
     if (isset($_REQUEST['id'])){
         $sql = 'SELECT * FROM actualites WHERE id_actualite='.$_REQUEST['id'];
@@ -22,6 +23,8 @@
         $date_modif = $resultat['date_revision'];
         $tag = $resultat['tags'];
         $sources = $resultat['sources'];
+
+        $actualite = new Actualite($resultat['id_actualite'], $titre, $texte, $url_image, $nom_auteur, $prenom_auteur, $tag, $date_modif, $date_publi, $sources);
     }
 
 ?>
@@ -42,16 +45,16 @@
     <main>
         <div class='content-container-page'>
             <div class='img-actualite-page'>
-                <img src="<?php echo $url_image?>" alt="Image Actu" title="Image Actu" class='img-actu' />
+                <img src="<?= $actualite->getUrlImage()?>" alt="Image Actu" title="Image Actu" class='img-actu' />
             </div>
             <div class='content-page'>
-                <p>Dernière date de modification : <?php echo $date_modif; ?></p>
-                <p>Tags : <?php echo $tag; ?></p>
-                <h2 class='titre_actu'><?php echo $titre; ?></h2>
-                <p class='texte-content'><?php echo $texte; ?></p>
-                <p>Auteur : <?php echo $nom_auteur . $prenom_auteur; ?></p>
-                <p>Date de publication : <?php echo $date_publi; ?></p>
-                <p class='sources'>Sources : <?php echo $sources; ?></p>
+                <p>Dernière date de modification : <?= $actualite->getDateModif()?></p>
+                <p>Tags : <?= $actualite->getTag()?></p>
+                <h2 class='titre_actu'><?= $actualite->getTitre()?></h2>
+                <p class='texte-content'><?= $actualite->getText()?></p>
+                <p>Auteur : <?= $actualite->getNomAuteur()?> <?= $actualite->getPrenomAuteur()?></p>
+                <p>Date de publication : <?= $actualite->getDatePubli()?></p>
+                <p class='sources'>Sources : <?= $actualite->getSources()?></p>
             </div>
         </div>
     </main>
