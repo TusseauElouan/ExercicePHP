@@ -1,10 +1,10 @@
 <?php 
     require_once 'include/pdo.php';
+    require_once 'include/contact_class.php';
     if (isset($_REQUEST['nom'], $_REQUEST['prenom'], $_REQUEST['mail'])){
-        $sql = 'INSERT INTO contacts(nom, prenom, mail) VALUES ("'.$_REQUEST['nom'].'", "'.$_REQUEST['prenom'].'", "'.$_REQUEST['mail'].'")';
-        $temp = $pdo->exec($sql);
+        //Ajout du contact
+        Contact::insertInBDD($_REQUEST, $pdo);
         $message = 'Votre contact a été enregistré !';
-        $contact = new Contact($_REQUEST['nom'], $_REQUEST['prenom'], $_REQUEST['mail']);
     }
 ?>
 
@@ -33,7 +33,7 @@
                 <input type="submit" class='submit'/>
                 <p class='ajoute'>
                 <?php 
-                if (isset($_REQUEST['nom'], $_REQUEST['prenom'], $_REQUEST['mail'])){
+                if (isset($message)){
                     echo $message;
                 }?>
                 </p>

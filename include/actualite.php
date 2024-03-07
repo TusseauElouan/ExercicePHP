@@ -12,17 +12,17 @@ class Actualite{
     public $date_publi;
     public $sources;
 
-    public function __construct(int $id, string $titre, string $text, string $url_img, string $nom_auteur, string $prenom_auteur, string $tag, string $date_modif, string $date_publi, string $sources){
-        $this->id = $id;
-        $this->titre = $titre;
-        $this->text = $text;
-        $this->url_img = $url_img;
-        $this->nom_auteur = $nom_auteur;
-        $this->prenom_auteur = $prenom_auteur;
-        $this->tag = $tag;
-        $this->date_modif = $date_modif;
-        $this->date_publi = $date_publi;
-        $this->sources = $sources;
+    public function __construct(array $article, array $auteur){
+        $this->id = $article['id_actualite'];
+        $this->titre = $article['titre'];
+        $this->text = $article['titre'];
+        $this->url_img = $article['image'];
+        $this->nom_auteur = $auteur['nom'];
+        $this->prenom_auteur = $auteur['prenom'];
+        $this->tag = $article['tags'];
+        $this->date_modif = $article['date_revision'];
+        $this->date_publi = $article['date_publication'];
+        $this->sources = $article['sources'];
     }
 
     public function getID() :string
@@ -76,6 +76,20 @@ class Actualite{
 
     public function apercu():string{
         return substr($this->text, 0, 300).'...';
+    }
+
+    public static function getAuteur($pdo){
+        $sql = 'SELECT auteurs.nom, auteurs.prenom FROM auteurs, actualites WHERE auteurs.id_auteur = actualites.id_auteur ORDER BY actualites.date_revision DESC LIMIT 5';
+        $resultat = $pdo->prepare($sql);
+        $resultat->execute();
+        return $resultat->fetchAll();
+    }
+
+    public static function getAll($pdo){
+        $sql = 'SELECT * FROM actualites ORDER BY date_revision DESC LIMIT 5';
+        $resultat = $pdo->prepare($sql);
+        $resultat->execute();
+        return $resultat->fetchAll();
     }
 }
 
