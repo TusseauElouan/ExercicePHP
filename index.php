@@ -27,7 +27,7 @@
                     for ($index = 0; $index < 5; $index++){
                         $actualite = new Actualite($resultat[$index],$resultat2[$index]);
                 ?>
-                <a href='article.php?id=<?= $actualite->getID()?>' class='link-actu'>
+                <a href='pages/article.php?id=<?= $actualite->getID()?>' class='link-actu'>
                     <div class='actualite'>
                         <div class='img-actu-container'>
                             <img src='<?= $actualite->getUrlImage()?>' alt='Image Actu' title='Image Actu' class='img-actu'/>
@@ -44,7 +44,7 @@
                     </div>
                 </a>
                 <?php }?>
-                <a href="actualite.php" class='link-actu'>
+                <a href="pages/actualite_display.php" class='link-actu'>
                     <div class='actualite_ensavoirplus'>
                         <div class="centrer">
                             <h3>En savoir plus...</h3>

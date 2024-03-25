@@ -258,6 +258,22 @@ footer{
     justify-content: center;
     min-height: 800px;
 }
+
+.nav-container nav{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: end;
+}
+
+.is-active{
+    display: block !important;
+}
+
+.sous_menu{
+    display: none;
+}
+
 @media  screen and (max-width: 1400px) {
     .actus-container{
         grid-template-columns: auto;

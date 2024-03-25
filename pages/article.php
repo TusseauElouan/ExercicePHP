@@ -1,5 +1,5 @@
 <?php 
-    require_once "include/actualite.php";
+    require_once "../include/actualite.php";
 
     if (isset($_REQUEST['id'])){
         $id = htmlentities($_REQUEST['id']);
@@ -18,16 +18,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Article | <?php echo $actualite->getTitre();?></title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <?php 
-        include 'include/header.php'
+        include '../include/header.php'
     ?>
     <main>
         <div class='content-container-page'>
             <div class='img-actualite-page'>
-                <img src="<?= $actualite->getUrlImage()?>" alt="Image Actu" title="Image Actu" class='img-actu' />
+                <img src="../<?= $actualite->getUrlImage()?>" alt="Image Actu" title="Image Actu" class='img-actu' />
             </div>
             <div class='content-page'>
                 <p>Dernière date de modification : <?= $actualite->getDateModif()?></p>
@@ -41,7 +41,7 @@
         </div>
     </main>
     <?php
-    include 'include/footer.php'
+    include '../include/footer.php'
     ?>
 </body>
 </html>
