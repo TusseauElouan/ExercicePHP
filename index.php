@@ -1,5 +1,4 @@
 <?php 
-    require_once "include/pdo.php";
     require_once "include/actualite.php";
 ?>
 
@@ -16,16 +15,15 @@
     <main>
         <div class="background">
             <div>
-                <h2 id="accueil">Bienvenue sur votre site remplie d'actualités !</h2>
+                <h2 id="accueil">Bienvenue sur votre site rempli d'actualités !</h2>
             </div>
         </div>
         <div>
             <h2 id="actus">Actualités</h2>
             <div class="actus-container">
                 <?php
-                    $compteur = 0;
-                    $resultat = Actualite::getAll($pdo);
-                    $resultat2= Actualite::getAuteur($pdo);
+                    $resultat = Actualite::getAll();
+                    $resultat2= Actualite::getAuteur();
                     for ($index = 0; $index < 5; $index++){
                         $actualite = new Actualite($resultat[$index],$resultat2[$index]);
                 ?>

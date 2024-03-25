@@ -1,9 +1,8 @@
 <?php 
-    require_once 'include/pdo.php';
     require_once 'include/contact_class.php';
     if (isset($_REQUEST['nom'], $_REQUEST['prenom'], $_REQUEST['mail'])){
         //Ajout du contact
-        Contact::insertInBDD($_REQUEST, $pdo);
+        Contact::insertInBDD($_REQUEST);
         $message = 'Votre contact a été enregistré !';
     }
 ?>

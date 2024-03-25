@@ -1,6 +1,6 @@
 <?php
-    
-    class Contact
+    require_once 'SQL.php';
+    class Contact extends SQL
     {
         public $nom;
         public $mail;
@@ -28,7 +28,7 @@
             return $this->prenom;
         }
 
-        public static function insertInBDD(array $values, $pdo)
+        public static function insertInBDD(array $values)
         {
         $sql = 'INSERT INTO contacts(nom, prenom, mail) VALUES (:nom, :prenom, :mail)';
         $data = [
@@ -36,8 +36,8 @@
             'prenom' => htmlentities($values['prenom']),
             'mail' => htmlentities($values['mail'])
         ];
-        $prep = $pdo->prepare($sql);
-        $result = $prep->execute($data);
+        $resultat = new SQL($sql);
+        return $resultat->executeSQL($sql, $data);
         }
     }
 ?>

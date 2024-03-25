@@ -1,30 +1,12 @@
 <?php 
-
-    require_once "include/pdo.php";
     require_once "include/actualite.php";
 
     if (isset($_REQUEST['id'])){
-        $sql = 'SELECT * FROM actualites WHERE id_actualite='.$_REQUEST['id'];
-        $temp = $pdo->query($sql);
-        
-        $sql2 = 'SELECT auteurs.nom, auteurs.prenom FROM auteurs, actualites WHERE auteurs.id_auteur = actualites.id_auteur AND actualites.id_actualite = '.$_REQUEST['id'];
-        $temp2 = $pdo->query($sql2);
+        $id = htmlentities($_REQUEST['id']);
+        $resultat = Actualite::getArticleAuteur($id);
+        $resultat2 = Actualite::getArticle($id);
 
-        $resultat = $temp->fetch();
-        $resultat2 = $temp2->fetch();
-
-        $nom_auteur = $resultat2['nom'];
-        $prenom_auteur = $resultat2['prenom'];
-
-        $titre = $resultat['titre'];
-        $texte = $resultat['corp_texte'];
-        $url_image = $resultat['image'];
-        $date_publi = $resultat['date_publication'];
-        $date_modif = $resultat['date_revision'];
-        $tag = $resultat['tags'];
-        $sources = $resultat['sources'];
-
-        $actualite = new Actualite($resultat['id_actualite'], $titre, $texte, $url_image, $nom_auteur, $prenom_auteur, $tag, $date_modif, $date_publi, $sources);
+        $actualite = new Actualite($resultat2[0], $resultat[0]);
     }
 
 ?>
@@ -35,7 +17,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Article | <?php echo $titre;?></title>
+    <title>Article | <?php echo $actualite->getTitre();?></title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>

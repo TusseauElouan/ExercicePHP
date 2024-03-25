@@ -1,6 +1,6 @@
 <?php
-
-class Actualite{
+require_once 'SQL.php';
+class Actualite extends SQL{
     public $id;
     public $titre;
     public $text;
@@ -11,11 +11,12 @@ class Actualite{
     public $date_modif;
     public $date_publi;
     public $sources;
+    public $resultat;
 
     public function __construct(array $article, array $auteur){
         $this->id = $article['id_actualite'];
         $this->titre = $article['titre'];
-        $this->text = $article['titre'];
+        $this->text = $article['corp_texte'];
         $this->url_img = $article['image'];
         $this->nom_auteur = $auteur['nom'];
         $this->prenom_auteur = $auteur['prenom'];
@@ -78,18 +79,24 @@ class Actualite{
         return substr($this->text, 0, 300).'...';
     }
 
-    public static function getAuteur($pdo){
+    public static function getAuteur(){
         $sql = 'SELECT auteurs.nom, auteurs.prenom FROM auteurs, actualites WHERE auteurs.id_auteur = actualites.id_auteur ORDER BY actualites.date_revision DESC LIMIT 5';
-        $resultat = $pdo->prepare($sql);
-        $resultat->execute();
-        return $resultat->fetchAll();
+        return SQL::querySQL($sql);
     }
 
-    public static function getAll($pdo){
+    public static function getAll() {
         $sql = 'SELECT * FROM actualites ORDER BY date_revision DESC LIMIT 5';
-        $resultat = $pdo->prepare($sql);
-        $resultat->execute();
-        return $resultat->fetchAll();
+        return SQL::querySQL($sql);
+    }
+
+    public static function getArticleAuteur(int $id){
+        $sql = 'SELECT auteurs.nom, auteurs.prenom FROM auteurs, actualites WHERE auteurs.id_auteur = actualites.id_auteur AND actualites.id_actualite = '.$id.' ';
+        return SQL::querySQL($sql);
+    }
+
+    public static function getArticle(int $id){
+        $sql = 'SELECT * FROM actualites WHERE id_actualite = '.$id.' ';
+        return SQL::querySQL($sql);
     }
 }
 
