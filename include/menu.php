@@ -2,6 +2,9 @@
     require_once 'SQL.php';
 
     class Menu extends SQL{
+
+        public $values;
+
         public function __construct(array $values){
             $this->id = $values['id_menu'];
             $this->nom = $values['nom'];
@@ -39,8 +42,8 @@
             return SQL::querySQL($sql);
         }
 
-        public static function getMenuById(int $id, int $categorie_id):array{
-            $sql = "SELECT nom FROM menus WHERE id_menu = $categorie_id";
+        public static function getMenuById(int $id):array{
+            $sql = "SELECT * FROM menus WHERE id_menu = $id";
             return SQL::querySQL($sql);
         }
 
@@ -49,16 +52,43 @@
             return SQL::querySQL($sql);
         }
 
-
-
-        public static function AddMenu(){
-            $sql = "INSERT INTO menus(nom, url, sousmenu) VALUES (:nom, :url, :categorie_id)";
+        public static function deleteMenuById(int $id){
+            $sql = "DELETE FROM menus WHERE id_menu = :id";
             $data = [
-                'nom' =>htmlentities($_POST['nom']),
-                'url' => htmlentities($_POST['url']),
-                'categorie_id' => htmlentities($_POST['categorie_id'])
+                'id' => $id
             ];
             return SQL::executeSQL($sql, $data);
+        }
+
+        public static function AddMenu(array $menu){
+            $sql = "INSERT INTO menus(nom, categorie_id) VALUES (:nom, :categorie_id)";
+            $data = [
+                'nom' => $menu['nom'],
+                'categorie_id' => $menu['menu']
+            ];
+
+            if ($data['categorie_id'] == ""){
+                $data['categorie_id'] = NULL;
+            }
+            return SQL::executeSQL($sql, $data);
+        }
+
+        public static function updateMenu(array $menu){
+            $sql = "UPDATE menus SET categorie_id = :categorie_id, nom = :nom WHERE id_menu = :id";
+            $data = [
+                'id' => $menu['id'],
+                'nom' => $menu['nom'],
+                'categorie_id' => $menu['categorie']
+            ];
+            return SQL::executeSQL($sql, $data);
+        }
+
+        public static function afficherCategorie(int $id){
+            $resultat = Menu::getMenuByCategorie($id);
+            for ($i = 0; $i < count($resultat); $i++) {
+                $menu = new Menu($resultat[$i]);
+                echo '';
+            }
         }
     }
 ?>

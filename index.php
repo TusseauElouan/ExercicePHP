@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php include 'include/header.php'?>
+    <?php include 'include/header_index.php'?>
     <main>
         <div class="background">
             <div>

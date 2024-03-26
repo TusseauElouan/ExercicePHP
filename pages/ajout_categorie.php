@@ -1,3 +1,9 @@
+<?php
+    require_once '../include/menu.php';
+    if (isset($_REQUEST['nom'], $_REQUEST['menu'])){
+        Menu::AddMenu($_REQUEST);
+    }
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,26 +12,39 @@
     <title>Ajout d'une catégorie</title>
     <link rel="stylesheet" href="../style.css">
 </head>
-    <?php
-        include_once '../include/header.php';
-    ?>
+
     <body>
-        <form action="">
-            <h2>Ajout d'une catégorie</h2>
-            <div class="formulaire-container">
-                <label for="titre">Nom de la catégorie</label>
-                <input type="text" name="titre" id="titre" placeholder="Nom de la catégorie">
-            </div>
-            <div class="formulaire-container">
-                <select name="" id=""></select>
-            </div>
-            <div class="formulaire-container">
-                <input type="submit" value="Ajouter la catégorie">
-            </div>
-        </form>
-        </form>
+        <?php
+            include_once '../include/header.php';
+        ?>
+        <main>
+            <form action="" method='POST'>
+                <h2>Ajout d'une catégorie</h2>
+                <div class="formulaire-container">
+                    <label for="nom">Nom de la catégorie</label>
+                    <input type="text" name="nom" id="nom" placeholder="Nom de la catégorie">
+                </div>
+                <div class="formulaire-container">
+                    <select name="menu">
+                        <option value="">Aucune</option>
+                        <?php 
+                        require_once "../include/menu.php";
+                        $resultat = Menu::getAllMenu();
+                        for($i = 0; $i < count($resultat); $i++){
+                            $menu = new Menu($resultat[$i]);
+                            echo '<option value="'.$menu->getId().'">'.$menu->getNom().'</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="formulaire-container">
+                    <input type="submit" value="Ajouter la catégorie">
+                </div>
+            </form>
+        </main>
+        <?php
+            include_once '../include/footer.php';
+        ?>
     </body>
-    <?php
-        include_once '../include/footer.php';
-    ?>
+
 </html>

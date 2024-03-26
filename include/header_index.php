@@ -10,8 +10,8 @@ require_once 'menu.php';
     <div class="nav-container">
         <nav>
             <ul>
-                <li><a href="../index.php">Accueil</a></li>
-                <li><a href="admin.php">Administration</a></li>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="pages/admin.php">Administration</a></li>
             <?php
                 $resultat = Menu::getMenu();
                 for ($i = 0; $i < count($resultat); $i++) {
@@ -19,14 +19,14 @@ require_once 'menu.php';
                     $resultat2 = Menu::getMenuByCategorie($menu_base->getId());
                     if ($resultat2 != null){
             ?>
-                <li class="deroulant"><a href="<?= $menu_base->getUrl();?>"><?= $menu_base->getNom(); ?> &ensp;</a>
+                <li class="deroulant"><a href="pages/<?= $menu_base->getUrl();?>"><?= $menu_base->getNom(); ?> &ensp;</a>
                     <ul class="sous">
                     <?php
                         for ($j = 0; $j < count($resultat2); $j++){
                             $menu = new Menu($resultat2[$j]);
                             if ($menu != null){
                     ?>
-                        <li><a href="<?= $menu->getUrl();?>"><?= $menu->getNom(); ?></a></li>
+                        <li><a href="pages/<?= $menu->getUrl();?>"><?= $menu->getNom(); ?></a></li>
                     <?php
                             }
                     ?>
@@ -34,7 +34,7 @@ require_once 'menu.php';
             <?php
                         }
                     } else{
-                        echo '<li><a href="'. $menu_base->getUrl() .'">'. $menu_base->getNom() .'</a></li>';
+                        echo '<li><a href="pages/'. $menu_base->getUrl() .'">'. $menu_base->getNom() .'</a></li>';
                     }
                 }
             ?>

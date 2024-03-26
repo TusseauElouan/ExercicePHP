@@ -32,19 +32,71 @@ header{
     width:60px;
 }
 
-.nav-container{
-    display: flex;
-    align-items: center;
-    height: 100%;
-    justify-content: end;
+nav ul{
+    list-style-type: none;
+    margin-right: 10px;
 }
 
-.nav-container a{
-    color: white;
+nav ul li{
+    float: left;
+    width: fit-content;
+    text-align: center;
+    position: relative;
+    margin: 0 10px;
+}
+
+nav ul::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+nav a{
+    display: block;
     text-decoration: none;
-    margin: 0 20px;
-    padding: 15px 0;
-    font-weight: bold;
+    color: white;
+    border-bottom: 2px solid transparent;
+    padding: 10px 0px;
+}
+
+nav a:hover{
+    color: rgb(15, 166, 189);
+    border-bottom: 2px solid rgb(4, 174, 209);
+}
+
+.sous{
+    display: none;
+    box-shadow: 0px 1px 2px #CCC;
+    background-color: #070605;
+    position: absolute;
+    width: fit-content;
+    z-index: 1000;
+}
+
+nav > ul li:hover .sous{
+    display: block;
+}
+.sous li{
+    float: none;
+    width: 100%;
+    text-align: left;
+}
+.sous a{
+    padding: 10px;
+    border-bottom: none;
+}
+.sous a:hover{
+    border-bottom: none;
+    background-color: RGBa(200,200,200,0.1);
+}
+.deroulant > a::after{
+    content:" ▼";
+    font-size: 12px;
+}
+
+.conteneur{
+  margin: 50px 20px;
+  height: 1500px;
 }
 
 .background{
@@ -266,14 +318,17 @@ footer{
     justify-content: end;
 }
 
-.is-active{
-    display: block !important;
+.imgs-modif{
+    width: 5%;
 }
 
-.sous_menu{
+.img-add{
+    width: 2%;
+}
+
+.formPopUp{
     display: none;
 }
-
 @media  screen and (max-width: 1400px) {
     .actus-container{
         grid-template-columns: auto;
