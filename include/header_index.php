@@ -29,10 +29,11 @@ require_once 'menu.php';
                         <li><a href="pages/<?= $menu->getUrl();?>"><?= $menu->getNom(); ?></a></li>
                     <?php
                             }
+                        }
                     ?>
                     </ul>
             <?php
-                        }
+                        
                     } else{
                         echo '<li><a href="pages/'. $menu_base->getUrl() .'">'. $menu_base->getNom() .'</a></li>';
                     }

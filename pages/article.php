@@ -1,5 +1,5 @@
 <?php 
-    require_once "../include/actualite.php";
+    require_once "../include/Actualite.php";
 
     if (isset($_REQUEST['id'])){
         $id = htmlentities($_REQUEST['id']);

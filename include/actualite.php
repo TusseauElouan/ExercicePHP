@@ -1,6 +1,7 @@
 <?php
 require_once 'SQL.php';
-class Actualite extends SQL{
+require_once 'Affichable.php';
+class Actualite extends SQL implements Affichable{
     public $id;
     public $titre;
     public $text;
@@ -97,6 +98,25 @@ class Actualite extends SQL{
     public static function getArticle(int $id){
         $sql = 'SELECT * FROM actualites WHERE id_actualite = '.$id.' ';
         return SQL::querySQL($sql);
+    }
+
+    public function afficher(){
+        echo "<a href='pages/article.php?id=". $this->id ."' class='link-actu'>
+                    <div class='actualite'>
+                        <div class='img-actu-container'>
+                            <img src='".$this->url_img."' alt='Image Actu' title='Image Actu' class='img-actu'/>
+                        </div>
+                        <div class='content-actu'>
+                            <p class='tags'>Tags :".$this->tag."</p>
+                            <p class='date_modif'>Dernière modification :".$this->date_modif."</p>
+                            <h3 class='titre_actu'>".$this->titre."</h3>
+                            <p class='texte-content'>".substr($this->text, 0, 300)."...</p>
+                            <p class='auteurs'>Auteur : ".$this->nom_auteur." ".$this->prenom_auteur."</p>
+                            <p class='date_publi'>Date de publication : ".$this->date_publi."</p>
+                            <p class='sources'>Sources :".$this->sources."</p>
+                        </div>
+                    </div>
+                </a>";
     }
 }
 

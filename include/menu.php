@@ -1,7 +1,8 @@
 <?php
     require_once 'SQL.php';
+    require_once 'Affichable.php';
 
-    class Menu extends SQL{
+    class Menu extends SQL implements Affichable{
 
         public $values;
 
@@ -83,12 +84,8 @@
             return SQL::executeSQL($sql, $data);
         }
 
-        public static function afficherCategorie(int $id){
-            $resultat = Menu::getMenuByCategorie($id);
-            for ($i = 0; $i < count($resultat); $i++) {
-                $menu = new Menu($resultat[$i]);
-                echo '';
-            }
+        public function afficher(){
+            
         }
     }
 ?>

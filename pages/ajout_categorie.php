@@ -1,5 +1,5 @@
 <?php
-    require_once '../include/menu.php';
+    require_once '../include/Menu.php';
     if (isset($_REQUEST['nom'], $_REQUEST['menu'])){
         Menu::AddMenu($_REQUEST);
     }

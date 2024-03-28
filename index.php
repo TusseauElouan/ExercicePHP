@@ -1,5 +1,5 @@
 <?php 
-    require_once "include/actualite.php";
+    require_once "include/Actualite.php";
 ?>
 
 <!DOCTYPE html>
@@ -24,26 +24,11 @@
                 <?php
                     $resultat = Actualite::getAll();
                     $resultat2= Actualite::getAuteur();
-                    for ($index = 0; $index < 5; $index++){
+                    for ($index = 0; $index < count($resultat); $index++){
                         $actualite = new Actualite($resultat[$index],$resultat2[$index]);
-                ?>
-                <a href='pages/article.php?id=<?= $actualite->getID()?>' class='link-actu'>
-                    <div class='actualite'>
-                        <div class='img-actu-container'>
-                            <img src='<?= $actualite->getUrlImage()?>' alt='Image Actu' title='Image Actu' class='img-actu'/>
-                        </div>
-                        <div class='content-actu'>
-                            <p class='tags'>Tags : <?= $actualite->getTag()?></p>
-                            <p class='date_modif'>Dernière modification : <?= $actualite->getDateModif()?></p>
-                            <h3 class='titre_actu'><?= $actualite->getTitre()?></h3>
-                            <p class='texte-content'><?= $actualite->apercu()?></p>
-                            <p class='auteurs'>Auteur : <?= $actualite->getNomAuteur()?> <?= $actualite->getPrenomAuteur()?></p>
-                            <p class='date_publi'>Date de publication : <?= $actualite->getDatePubli()?></p>
-                            <p class='sources'>Sources : <?= $actualite->getSources()?></p>
-                        </div>
-                    </div>
-                </a>
-                <?php }?>
+                        $actualite->afficher();
+                    }
+                    ?>
                 <a href="pages/actualite_display.php" class='link-actu'>
                     <div class='actualite_ensavoirplus'>
                         <div class="centrer">

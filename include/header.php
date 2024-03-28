@@ -1,5 +1,5 @@
 <?php
-require_once 'menu.php';
+require_once 'Menu.php';
     $page = basename($_SERVER["PHP_SELF"]);
 ?>
 <header>
@@ -13,32 +13,38 @@ require_once 'menu.php';
                 <li><a href="../index.php">Accueil</a></li>
                 <li><a href="admin.php">Administration</a></li>
             <?php
-                $resultat = Menu::getMenu();
-                for ($i = 0; $i < count($resultat); $i++) {
-                    $menu_base = new Menu($resultat[$i]);
-                    $resultat2 = Menu::getMenuByCategorie($menu_base->getId());
-                    if ($resultat2 != null){
+                $res_categorie = Menu::getMenu();
+                for ($i = 0; $i < count($res_categorie); $i++){
+                    $categorie = new Menu($res_categorie[$i]);
+                    $res_sous_categorie = Menu::getMenuByCategorie($categorie->getId());
+                    
+                    if ($res_sous_categorie != null){
             ?>
-                <li class="deroulant"><a href="<?= $menu_base->getUrl();?>"><?= $menu_base->getNom(); ?> &ensp;</a>
-                    <ul class="sous">
-                    <?php
-                        for ($j = 0; $j < count($resultat2); $j++){
-                            $menu = new Menu($resultat2[$j]);
-                            if ($menu != null){
-                    ?>
-                        <li><a href="<?= $menu->getUrl();?>"><?= $menu->getNom(); ?></a></li>
-                    <?php
-                            }
-                    ?>
-                    </ul>
+                        <li class="deroulant"><a href="menu_display.php?id=<?= $categorie->getId();?>"><?= $categorie->getNom(); ?> &ensp;</a>
+                            <ul class="sous">
             <?php
+                        for ($j = 0; $j < count($res_sous_categorie); $j++){
+                            $sous_categorie = new Menu($res_sous_categorie[$j]);
+                            if ($sous_categorie != null){
+            ?>
+                                <li><a href="menu_display.php?id=<?= $sous_categorie->getId();?>"><?= $sous_categorie->getNom(); ?></a></li>
+            <?php
+                            }
                         }
+            ?>
+                            </ul>
+            <?php
+                        
                     } else{
-                        echo '<li><a href="'. $menu_base->getUrl() .'">'. $menu_base->getNom() .'</a></li>';
+                        echo '<li><a href="menu_display.php?id='. $categorie->getUrl() .'">'. $categorie->getNom() .'</a></li>';
                     }
                 }
+                
             ?>
             </ul>
+            <?php
+            
+            ?>
         </nav>
     </div>
 </header>

@@ -13,14 +13,14 @@
         }
 
         public static function querySQL(string $sql){
-            $pdo = SQL::connexionBDD();
+            $pdo = self::connexionBDD();
             $resultat = $pdo->prepare($sql);
             $resultat->execute();
             return $resultat->fetchAll(PDO::FETCH_ASSOC);
         }
 
         public static function executeSQL(string $sql, array $values){
-            $pdo = SQL::connexionBDD();
+            $pdo = self::connexionBDD();
             $resultat = $pdo->prepare($sql);
             $resultat->execute($values);
             return $resultat;
