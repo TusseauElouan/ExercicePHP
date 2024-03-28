@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 28 fév. 2024 à 16:35
+-- Généré le : jeu. 28 mars 2024 à 17:59
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -91,7 +91,44 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id_contact`, `nom`, `prenom`, `mail`) VALUES
-(1, 'Tusseau', 'Elouan', 'tusseauelouan@gmail.com');
+(1, 'Tusseau', 'Elouan', 'tusseauelouan@gmail.com'),
+(2, 'Bochette', 'Talmo', 'abc@bvc.cf'),
+(4, 'Bochette', 'Felis', 'abc@bvc.f'),
+(5, 'Neuille', 'Alizée', 'a@b.cf'),
+(7, 'Walker', 'Paul', 'paul.walker@gmail.com'),
+(9, 'Bonnet', 'Antoine', 'antoine.bonnet@gmail.com'),
+(10, 'Mars', 'Rayan', 'rayan.mars@gmail.com'),
+(11, 'G&eacute;rard', 'L&eacute;o', 'leo.gerard@gmail.com'),
+(12, 'Parizet', 'Martin', 'martin.parizet@gmail.com'),
+(13, 'Chevalier', 'Cl&eacute;ment', 'clement.chevalier@gmail.com'),
+(15, 'Chevalier', 'Bastien', 'bastien.chevalier@gmail.com'),
+(16, 'Maillard', 'fjzi', 'nauiif@dnjza.fafa'),
+(18, 'Maillard', 'Felis', 'abc@bvc.ff'),
+(19, 'Walker', 'Paul', 'abc@bvc.cfee'),
+(20, 'Bochette', 'Th&eacute;o', 'FA@fe.fe'),
+(21, 'Bardell', 'AJordan', 'Marin@lepen.com');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `menus`
+--
+
+CREATE TABLE `menus` (
+  `id_menu` int(11) NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `categorie_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `menus`
+--
+
+INSERT INTO `menus` (`id_menu`, `nom`, `url`, `categorie_id`) VALUES
+(1, 'Sport', '', NULL),
+(6, 'Informatique', '', NULL),
+(7, 'Intelligence Artificielle', '', 6);
 
 --
 -- Index pour les tables déchargées
@@ -117,6 +154,12 @@ ALTER TABLE `contacts`
   ADD UNIQUE KEY `mail` (`mail`);
 
 --
+-- Index pour la table `menus`
+--
+ALTER TABLE `menus`
+  ADD PRIMARY KEY (`id_menu`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -136,7 +179,13 @@ ALTER TABLE `auteurs`
 -- AUTO_INCREMENT pour la table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id_contact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_contact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT pour la table `menus`
+--
+ALTER TABLE `menus`
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
