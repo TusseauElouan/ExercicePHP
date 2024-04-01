@@ -29,7 +29,7 @@
                         <option value="">Aucune</option>
                         <?php 
                         require_once "../include/menu.php";
-                        $resultat = Menu::getAllMenu();
+                        $resultat = Menu::getAll('menus');
                         for($i = 0; $i < count($resultat); $i++){
                             $menu = new Menu($resultat[$i]);
                             echo '<option value="'.$menu->getId().'">'.$menu->getNom().'</option>';

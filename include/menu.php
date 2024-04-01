@@ -1,10 +1,13 @@
 <?php
-    require_once 'SQL.php';
+    require_once 'RequeteSQL.php';
     require_once 'Affichable.php';
-
-    class Menu extends SQL implements Affichable{
+    class Menu extends RequeteSQL implements Affichable{
 
         public $values;
+        public $id;
+        public $nom;
+        public $url;
+        public $categorie_id;
 
         public function __construct(array $values){
             $this->id = $values['id_menu'];
@@ -48,11 +51,6 @@
             return SQL::querySQL($sql);
         }
 
-        public static function getAllMenu():array{
-            $sql = "SELECT * FROM menus";
-            return SQL::querySQL($sql);
-        }
-
         public static function deleteMenuById(int $id){
             $sql = "DELETE FROM menus WHERE id_menu = :id";
             $data = [
@@ -85,7 +83,23 @@
         }
 
         public function afficher(){
-            
-        }
+                echo '<tr>
+                                <td>'.$this->id.'</td>
+                                <td>'.$this->nom.'</td>
+                                <td>';
+                if ($this->getCategorieId() != null){
+                    $resultat_categorie = self::getMenuById($this->getCategorieId());
+                    echo $resultat_categorie[0]['nom'];
+                } else{
+                    echo 'Aucune catégorie';
+                }
+                                
+                                echo '</td>
+                                <td>
+                                    <a href="modification_categorie.php?id='.$this->id.'"><img src="../imgs/pencil-outline.svg" alt="Modifier" title="Modifier" class="imgs-modif"></a>
+                                    <a href="admin.php?delete_menu='.$this->id.'&id=0" class="delete-button"><img src="../imgs/trash-outline.svg" alt="Supprimer" title="Supprimer" class="imgs-modif"></a>
+                                </td>
+                            </tr>';  
     }
+}
 ?>

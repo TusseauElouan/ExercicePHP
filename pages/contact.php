@@ -1,5 +1,5 @@
 <?php 
-    require_once 'include/Contact_class.php';
+    require_once '../include/Contact.php';
     if (isset($_REQUEST['nom'], $_REQUEST['prenom'], $_REQUEST['mail'])){
         //Ajout du contact
         Contact::insertInBDD($_REQUEST);

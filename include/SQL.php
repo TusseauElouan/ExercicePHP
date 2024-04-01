@@ -1,4 +1,5 @@
 <?php
+
     class SQL{
         public static function connexionBDD(){
             $host = '127.0.0.1';

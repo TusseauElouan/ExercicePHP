@@ -1,5 +1,5 @@
 <?php 
-    require_once "include/Actualite.php";
+require_once 'include/Actualite.php';
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +22,7 @@
             <h2 id="actus">Actualités</h2>
             <div class="actus-container">
                 <?php
-                    $resultat = Actualite::getAll();
+                    $resultat = Actualite::getFive();
                     $resultat2= Actualite::getAuteur();
                     for ($index = 0; $index < count($resultat); $index++){
                         $actualite = new Actualite($resultat[$index],$resultat2[$index]);

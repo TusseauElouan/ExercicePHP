@@ -1,10 +1,13 @@
 <?php
 require_once 'SQL.php';
 require_once 'Affichable.php';
-
  class Categorie extends SQL implements Affichable{
 
     public $values;
+    public $id;
+    public $nom;
+    public $url;
+    public $categorie_id;
 
     public function __construct(array $values){
         $this->id = $values['id_menu'];

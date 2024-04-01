@@ -1,7 +1,8 @@
 <?php
-require_once 'SQL.php';
+require_once 'RequeteSQL.php';
 require_once 'Affichable.php';
-class Actualite extends SQL implements Affichable{
+
+class Actualite extends RequeteSQL implements Affichable{
     public $id;
     public $titre;
     public $text;
@@ -85,18 +86,13 @@ class Actualite extends SQL implements Affichable{
         return SQL::querySQL($sql);
     }
 
-    public static function getAll() {
+    public static function getFive() {
         $sql = 'SELECT * FROM actualites ORDER BY date_revision DESC LIMIT 5';
         return SQL::querySQL($sql);
     }
 
     public static function getArticleAuteur(int $id){
         $sql = 'SELECT auteurs.nom, auteurs.prenom FROM auteurs, actualites WHERE auteurs.id_auteur = actualites.id_auteur AND actualites.id_actualite = '.$id.' ';
-        return SQL::querySQL($sql);
-    }
-
-    public static function getArticle(int $id){
-        $sql = 'SELECT * FROM actualites WHERE id_actualite = '.$id.' ';
         return SQL::querySQL($sql);
     }
 

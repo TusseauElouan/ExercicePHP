@@ -1,10 +1,9 @@
 <?php 
-    require_once "../include/Actualite.php";
-
+    require_once '../include/Actualite.php';
     if (isset($_REQUEST['id'])){
         $id = htmlentities($_REQUEST['id']);
         $resultat = Actualite::getArticleAuteur($id);
-        $resultat2 = Actualite::getArticle($id);
+        $resultat2 = Actualite::getArticleOrPages($id, 'actualites', 'id_actualite');
 
         $actualite = new Actualite($resultat2[0], $resultat[0]);
     }

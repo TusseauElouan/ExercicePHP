@@ -1,10 +1,9 @@
 <?php
 require_once 'Menu.php';
-    $page = basename($_SERVER["PHP_SELF"]);
 ?>
 <header>
     <div class="logo-container">
-        <img class="logo" src="<?php if ($page != 'index.php'){ echo '../';} ?>imgs/logo.jfif" alt="Logo" title="Logo"/>
+        <img class="logo" src="../imgs/logo.jfif" alt="Logo" title="Logo"/>
         <h1 class="title-header">Actualités</h1>
     </div>
     <div class="nav-container">

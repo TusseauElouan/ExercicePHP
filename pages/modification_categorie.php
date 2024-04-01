@@ -1,5 +1,6 @@
 <?php
-require_once '../include/Menu.php';
+    require_once '../include/Menu.php';
+
     if (isset($_REQUEST['id'])) {
         $id = htmlentities($_REQUEST['id']);
         $resultat = Menu::getMenuById($id);
@@ -35,7 +36,7 @@ require_once '../include/Menu.php';
             <select name="categorie" id="categorie">
                 <option value="" selected>Aucune</option>
                 <?php
-                    $resultat2 = Menu::getAllMenu();
+                    $resultat2 = Menu::getAll('menus');
                     for ($i = 0; $i < count($resultat2); $i++){
                         $menu2 = new Menu($resultat2[$i]);
                 ?>

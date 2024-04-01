@@ -1,5 +1,5 @@
 <?php
-    include_once '../include/Categorie.php';
+    require_once '../include/Categorie.php';
     if (isset($_REQUEST['id'])) {
         $id = htmlentities($_REQUEST['id']);
 
@@ -30,13 +30,13 @@
         <ul>
         <?php 
             if (count($res_sous_categories) > 0) {
-            for ($index = 0; $index < count($res_sous_categories); $index++){
-                $affichage_sous_categorie = new Categorie($res_sous_categories[$index]);
-                $affichage_sous_categorie->afficher();
+                for ($index = 0; $index < count($res_sous_categories); $index++){
+                    $affichage_sous_categorie = new Categorie($res_sous_categories[$index]);
+                    $affichage_sous_categorie->afficher();
+                }
+            } else {
+                echo "<h3>Aucune sous-catégorie.</h3>";
             }
-        } else {
-            echo "<h3>Aucune sous-catégorie.</h3>";
-        }
         ?>
         </ul>
     </main>
