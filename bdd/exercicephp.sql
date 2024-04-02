@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 28 mars 2024 à 17:59
+-- Généré le : mar. 02 avr. 2024 à 09:07
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -94,7 +94,6 @@ INSERT INTO `contacts` (`id_contact`, `nom`, `prenom`, `mail`) VALUES
 (1, 'Tusseau', 'Elouan', 'tusseauelouan@gmail.com'),
 (2, 'Bochette', 'Talmo', 'abc@bvc.cf'),
 (4, 'Bochette', 'Felis', 'abc@bvc.f'),
-(5, 'Neuille', 'Alizée', 'a@b.cf'),
 (7, 'Walker', 'Paul', 'paul.walker@gmail.com'),
 (9, 'Bonnet', 'Antoine', 'antoine.bonnet@gmail.com'),
 (10, 'Mars', 'Rayan', 'rayan.mars@gmail.com'),
@@ -105,8 +104,7 @@ INSERT INTO `contacts` (`id_contact`, `nom`, `prenom`, `mail`) VALUES
 (16, 'Maillard', 'fjzi', 'nauiif@dnjza.fafa'),
 (18, 'Maillard', 'Felis', 'abc@bvc.ff'),
 (19, 'Walker', 'Paul', 'abc@bvc.cfee'),
-(20, 'Bochette', 'Th&eacute;o', 'FA@fe.fe'),
-(21, 'Bardell', 'AJordan', 'Marin@lepen.com');
+(20, 'Bochette', 'Th&eacute;o', 'FA@fe.fe');
 
 -- --------------------------------------------------------
 
@@ -129,6 +127,24 @@ INSERT INTO `menus` (`id_menu`, `nom`, `url`, `categorie_id`) VALUES
 (1, 'Sport', '', NULL),
 (6, 'Informatique', '', NULL),
 (7, 'Intelligence Artificielle', '', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pages`
+--
+
+CREATE TABLE `pages` (
+  `id_page` int(11) NOT NULL,
+  `titre` varchar(255) NOT NULL,
+  `corp_texte` text NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `date_publication` date NOT NULL,
+  `date_revision` date NOT NULL,
+  `id_auteur` int(11) NOT NULL,
+  `tags` varchar(255) NOT NULL,
+  `sources` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Index pour les tables déchargées
@@ -160,6 +176,12 @@ ALTER TABLE `menus`
   ADD PRIMARY KEY (`id_menu`);
 
 --
+-- Index pour la table `pages`
+--
+ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id_page`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -186,6 +208,12 @@ ALTER TABLE `contacts`
 --
 ALTER TABLE `menus`
   MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT pour la table `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
